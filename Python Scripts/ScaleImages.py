@@ -20,7 +20,7 @@ for root, dirnames, filenames in os.walk(path):
                     newDir = "{}{}Cropped".format(path, dirname)
                     os.mkdir(newDir)
                 except OSError:
-                    print ("Creation of the directory %s failed" % newDir)
+                    print ("Directory %s already exists" % newDir)
                 else:
                     print ("Successfully created the directory %s " % newDir)
         
@@ -57,5 +57,5 @@ for root, dirnames, filenames in os.walk(path):
         count += 1
         totalcount +=1
 
-print("Scaling successful! Generated {} diffrent images".format(totalcount))
+print("Scaling successful! Generated %s images" % totalcount)
 
