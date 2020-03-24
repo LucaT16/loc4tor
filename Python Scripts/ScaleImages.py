@@ -8,7 +8,6 @@ image_list = []
 path = '../Bilder/'
 size = (244,244)
 
-
 for root, dirnames, filenames in os.walk(path):
 
     #create dictionary for cropped pics
