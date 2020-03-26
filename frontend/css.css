@@ -1,0 +1,20 @@
+body { 
+	color: white;
+	background-color: black;
+	font-family: "Helvetica Neue";
+}
+
+h1 {
+	text-align: center;
+}
+
+textarea {
+	color: white;
+	background-color: black;
+	font-family: "Helvetica Neue";
+	outline: true;
+}
+
+p {
+	text-align: center;
+}
