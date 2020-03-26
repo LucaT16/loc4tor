@@ -29,7 +29,39 @@ So far the following landmarks are integrated already:
 
     <input type="file"
     id="files" name="files[]" multiple />
-    <output id="list"></output>
+
+
+    <script>
+    function dateiauswahl(evt) {
+            var dateien = evt.target.files; // FileList object
+            // Auslesen der gespeicherten Dateien durch Schleife
+            for (var i = 0, f; f = dateien[i]; i++) {
+                // nur Bild-Dateien
+                if (!f.type.match('image.*')) {
+                    continue;
+                }
+                var reader = new FileReader();
+                reader.onload = (function (theFile) {
+                    return function (e) {
+                        // erzeuge Thumbnails.
+                        var vorschau = document.createElement('img');
+                        vorschau.className = 'vorschau';
+                        vorschau.src = e.target.result;
+                        vorschau.title = theFile.name;
+                        document.getElementById('list')
+                            .insertBefore(vorschau, null);
+                    };
+                })(f);
+                // Bilder als Data URL auslesen.
+                reader.readAsDataURL(f);
+            }
+        }
+        // Auf neue Auswahl reagieren und gegebenenfalls Funktion dateiauswahl neu ausführen.
+    document.getElementById('files')
+        .addEventListener('change', dateiauswahl, false);
+
+</script>
+
 
 
 <br><br>
@@ -37,10 +69,10 @@ So far the following landmarks are integrated already:
 <div id="wrapper" style="width:1020px; display:table;">
     <div id="imageDiv" >
         <h3> Dein Bild:</h3><br><br>
-        <img id="sourceImage" width="400"/>
+            <output id="list"></output>
     </div>
     <div id="" style="width:100px; display:table-cell;">
-        <h3> ------>             </h3><br><br>
+
     </div>
     <div id="jsonOutput" style="width:600px; display:table-cell;">
         <h3> Ergebnis: </h3><br><br>
