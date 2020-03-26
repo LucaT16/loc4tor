@@ -26,22 +26,16 @@ So far the following landmarks are integrated already:
 <strong> Go, give it a try! </strong> 
 <br><br>
 
-Image to analyze: <input type="text" name="inputImage" id="inputImage"
-                         value="https://de.wikipedia.org/wiki/Eiffelturm#/media/Datei:Tour_Eiffel_Wikimedia_Commons.jpg"/>
+
+    <input type="file"
+    id="files" name="files[]" multiple />
+    <output id="list"></output>
+
+<script>
 
 
-<button onclick="processImage(value)">Analyze landmark</button>
-
+</script>
 <br><br>
-<div id="wrapper" style="width:1020px; display:table;">
-    <div id="imageDiv" >
-        <h3> Dein Bilde:</h3><br><br>
-        <img id="sourceImage" width="4000"/>
-    </div>
-    <div id="jsonOutput" style="width:600px; display:table-cell;">
-        <h3> Ergebnis: </h3><br><br>
-         <img id="sourceImage" width="4000"/>
-    </div>
-</div>
+
 </body>
 </html>
