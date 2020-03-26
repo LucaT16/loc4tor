@@ -8,18 +8,29 @@
 </head>
 <body>
 <script type="text/javascript" src="js/loc4tor.js"></script>
-<h1>Picture-Identifier:</h1>
-<p>Enter the URL to an image that includes a face or faces, then click
-the <strong> Analyze face </strong> button.<br><br>
-Image to analyze: <input type="text" name="inputImage" id="inputImage"
-                         value="https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg"/>
-<select id="attributes">
-    <option value="sex">Geschlecht</option>
-    <option value="age">Alter</option>
-    <option value="haircolour">Haarfarbe</option>
-</select>
+<h1>Loc4tor:</h1>
+<br>
 
-<button onclick="processImage(document.getElementById('attributes').value)">Analyze face</button>
+
+So far the following landmarks are integrated already:
+<ul>
+   <li>Eiffelturm</li>
+<li>Brandenburger Tor</li>
+<li>Freiheitstatue</li>
+<li>Colosseum</li>
+<li>Big Ben</li>
+<li>Golden Gate Bridge</li>
+</ul>
+
+    Enter the URL to an image or upload you own image that includes a listed landmark.
+<strong> Go, give it a try! </strong> 
+<br><br>
+
+Image to analyze: <input type="text" name="inputImage" id="inputImage"
+                         value="https://de.wikipedia.org/wiki/Eiffelturm#/media/Datei:Tour_Eiffel_Wikimedia_Commons.jpg"/>
+
+
+<button onclick="processImage(value)">Analyze landmark</button>
 
 <br><br>
 <div id="wrapper" style="width:1020px; display:table;">
@@ -28,9 +39,9 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
         <textarea id="responseTextArea" class="UIInput"
                   style="width:100px; height:20px; text-align: center"></textarea>
     </div>
-    <div id="imageDiv" style="width:420px; display:table-cell;">
+    <div id="imageDiv" >
         <h3> Source image:</h3><br><br>
-        <img id="sourceImage" width="400"/>
+        <img id="sourceImage" width="4000"/>
     </div>
 </div>
 </body>

@@ -1,6 +1,6 @@
 body { 
-	color: white;
-	background-color: black;
+	color: black;
+	background-color: white;
 	font-family: "Helvetica Neue";
 }
 
@@ -16,5 +16,6 @@ textarea {
 }
 
 p {
-	text-align: center;
+	text-align: left;
+	padding-left: 50px;
 }
