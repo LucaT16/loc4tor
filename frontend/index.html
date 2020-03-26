@@ -13,16 +13,15 @@
 
 
 So far the following landmarks are integrated already:
-<ul>
-   <li>Eiffelturm</li>
-<li>Brandenburger Tor</li>
-<li>Freiheitstatue</li>
-<li>Colosseum</li>
-<li>Big Ben</li>
-<li>Golden Gate Bridge</li>
-</ul>
-
-    Enter the URL to an image or upload you own image that includes a listed landmark.
+<br>
+<br>Eiffelturm
+<br>Brandenburger Tor
+<br>Freiheitstatue
+<br>Colosseum
+<br>Big Ben
+<br>Golden Gate Bridge
+<br>
+<br>Enter the URL to an image or upload you own image that includes a listed landmark.<br>
 <strong> Go, give it a try! </strong> 
 <br><br>
 
@@ -31,7 +30,7 @@ So far the following landmarks are integrated already:
     id="files" name="files[]" multiple />
 
 
-    <script>
+<script>
     function dateiauswahl(evt) {
             var dateien = evt.target.files; // FileList object
             // Auslesen der gespeicherten Dateien durch Schleife
@@ -66,8 +65,10 @@ So far the following landmarks are integrated already:
 
 <br><br>
 
-<div id="wrapper" style="width:1020px; display:table;">
-    <div id="imageDiv" >
+<div id="wrapper" style="display: table;
+  align-items: center;
+  justify-content: center ">
+    <div id="imageDiv" style="width:600px;" >
         <h3> Dein Bild:</h3><br><br>
         <!-- Input Picture -->
             <output id="list"></output>
@@ -77,7 +78,7 @@ So far the following landmarks are integrated already:
     </div>
     <div id="jsonOutput" style="width:600px; display:table-cell;">
         <h3> Ergebnis: </h3><br><br>
-<!-- Result picture-->
+        <!-- Result picture-->
           <img id="sourceImage" width="400"/>
 
     </div>
