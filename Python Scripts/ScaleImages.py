@@ -6,7 +6,6 @@ count = 0
 totalcount = 0
 image_list = []
 path = '../Bilder/'
-size = (244,244)
 
 for root, dirnames, filenames in os.walk(path):
 
@@ -41,12 +40,7 @@ for root, dirnames, filenames in os.walk(path):
 
         #resize images
         image = Image.open(file)
-        imageCropped = image.resize(size, Image.LANCZOS)
-
-        #save new images
-        newImage = "{}Cropped/{}".format(root, image_list[count])
-        imageCropped.save(newImage, optimized=True, quality=85)
-
+        
         #rotate the images 
         for i in range(11):
             rotatedImage = image.rotate(random.randrange(0, 360, 10))
