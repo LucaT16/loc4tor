@@ -29,9 +29,9 @@
 
 function showResult(result) {
 
-    switch (new Date().getDay()) {
+    switch (0) {
   case 0:
-    day = "Sunday";
+    result = "https://de.wikipedia.org/wiki/Eiffelturm#/media/Datei:Tour_Eiffel_Wikimedia_Commons.jpg";
     break;
   case 1:
     day = "Monday";
@@ -53,7 +53,7 @@ function showResult(result) {
 }
 
     // Display the image.
-    var sourceImageUrl = document.getElementById("inputImage").value;
+    var sourceImageUrl = result;
     document.querySelector("#sourceImage").src = sourceImageUrl;
 
 
