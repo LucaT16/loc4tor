@@ -65,18 +65,16 @@ So far the following landmarks are integrated already:
 
 <br><br>
 
-<div id="wrapper" style="display: table;
-  align-items: center;
-  justify-content: center ">
-    <div id="imageDiv" style="width:600px;" >
-        <h3> Your Picture </h3><br><br>
+<div id="wrapper" style="width: 100%; display: table; align-items: center; justify-content: center ">
+    <div id="yourImage" style="width:40%; display:table-cell; position: relative" >
+        <h3> Your Image</h3><br><br>
         <!-- Input Picture -->
-            <output id="list"></output>
+        <output id="list"></output>
     </div>
-    <div id="" style="width:200px; display:table-cell;">
-        <button onclick="processImage()">Analyse picture</button>
+    <div id="middle" style="width:20%; display:table-cell; position: relative">
+        <button onclick="processImage()">Analyse Image</button>
     </div>
-    <div id="jsonOutput" style="width:600px; display:table-cell;">
+    <div id="result" style="width:40%; display:table-cell;position: relative">
         <h3> Result </h3><br><br>
         <!-- Result picture-->
           <img id="sourceImage" width="400"/>
