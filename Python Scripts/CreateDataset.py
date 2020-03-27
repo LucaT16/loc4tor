@@ -5,7 +5,7 @@ import numpy as np
 import pickle
 
 DATADIR = "../Bilder/"
-CATEGORIES = ["Freiheitstatue","GoldenGateBridge"]
+CATEGORIES = ["BigBen", "BrandenburgerTor", "Eiffelturm", "Freiheitstatue", "GoldenGateBridge"]
 CROPPED = "Cropped"
 IMG_SIZE = 244
 training_data = []
@@ -23,6 +23,7 @@ for category in CATEGORIES:
             training_data.append([resized_array, class_num])
         except Exception as e:
             print(e)
+    print("Done with appending {}".format(category))
 random.shuffle(training_data)
 
 #create pickle datasets
