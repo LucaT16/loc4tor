@@ -23,7 +23,7 @@ for category in CATEGORIES:
             training_data.append([resized_array, class_num])
         except Exception as e:
             print(e)
-    print("Done with appending {}".format(category))
+    print("Info: Done with appending {}".format(category))
 random.shuffle(training_data)
 
 #create pickle datasets
@@ -40,8 +40,8 @@ y = np.array(y)
 pickle_out = open("x.pickle", "wb")
 pickle.dump(x, pickle_out)
 pickle_out.close()
-print("x.pickle created!")
+print("Info: x.pickle created!")
 pickle_out = open("y.pickle", "wb")
 pickle.dump(y, pickle_out)
 pickle_out.close()
-print("y.pickle created!")
+print("Info: y.pickle created!")

@@ -19,9 +19,9 @@ for root, dirnames, filenames in os.walk(path):
                     newDir = "{}{}Cropped".format(path, dirname)
                     os.mkdir(newDir)
                 except OSError:
-                    print ("Directory %s already exists" % newDir)
+                    print ("Info: Directory %s already exists" % newDir)
                 else:
-                    print ("Successfully created the directory %s " % newDir)
+                    print ("Info: Successfully created the directory %s " % newDir)
         
     #skale the image
     for filename in filenames:
@@ -51,5 +51,5 @@ for root, dirnames, filenames in os.walk(path):
         count += 1
         totalcount +=1
 
-print("Scaling successful! Generated %s images" % totalcount)
+print("Info: Scaling successful! Generated %s images" % totalcount)
 
