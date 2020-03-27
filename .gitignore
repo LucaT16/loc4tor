@@ -126,5 +126,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
 Python Scripts/.vscode/*
 *.pickle
+*.DS_Store
+
