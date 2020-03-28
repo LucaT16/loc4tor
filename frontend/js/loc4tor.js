@@ -65,4 +65,7 @@ function showUserImage (){
 
 	var userImageUrl = document.getElementById('picUrl').value;
     document.querySelector("#yourImageLink").src = userImageUrl;
+
+    document.querySelector("#analyseButton").style = "";
+
 }
