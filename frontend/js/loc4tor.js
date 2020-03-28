@@ -6,6 +6,7 @@
                 if (!f.type.match('image.*')) {
                     continue;
                 }
+              
                 var reader = new FileReader();
                 reader.onload = (function (theFile) {
                     return function (e) {
