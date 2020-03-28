@@ -54,9 +54,14 @@ function showResult(result) {
 }
 
     // Display the image.
+
     var sourceImageUrl = result;
     document.querySelector("#sourceImage").src = sourceImageUrl;
 
 
 
 };
+function showUserImage (link){
+	var userImageUrl = link;
+    document.querySelector("#yourImageLink").src = "https://instrumentormusikunterricht.files.wordpress.com/2012/01/homer.jpg?w=1280l";
+}
