@@ -25,56 +25,26 @@ So far the following landmarks are integrated already:
 <strong> Go, give it a try! </strong> 
 <br><br>
 
+<input type="url" id="picUrl" value="" placeholder="Link to your picture here" />
 
-    <input type="file"
-    id="files" name="files[]" multiple />
-
-
-<script>
-    function dateiauswahl(evt) {
-            var dateien = evt.target.files; // FileList object
-            // Auslesen der gespeicherten Dateien durch Schleife
-            for (var i = 0, f; f = dateien[i]; i++) {
-                // nur Bild-Dateien
-                if (!f.type.match('image.*')) {
-                    continue;
-                }
-                var reader = new FileReader();
-                reader.onload = (function (theFile) {
-                    return function (e) {
-                        // erzeuge Thumbnails.
-                        var vorschau = document.createElement('img');
-                        vorschau.className = 'vorschau';
-                        vorschau.src = e.target.result;
-                        vorschau.title = theFile.name;
-                        document.getElementById('list')
-                            .insertBefore(vorschau, null);
-                    };
-                })(f);
-                // Bilder als Data URL auslesen.
-                  console.log(f);
-                reader.readAsDataURL(f);
-            }
-        }
-        // Auf neue Auswahl reagieren und gegebenenfalls Funktion dateiauswahl neu ausführen.
-    document.getElementById('files')
-        .addEventListener('change', dateiauswahl, false);
-
-</script>
 
 
 
 <br><br>
 
+
 <div id="wrapper" style="width: 100%; display: table; align-items: center; justify-content: center ">
+
     <div id="yourImage" style="width:40%; display:table-cell; position: relative" >
         <h3> Your Image</h3><br><br>
-        <img id="yourImageLink" src="https://clipnow.s3.amazonaws.com/items/us_test_user/contact/Your_Picture_Here.png">         
+        <img id="yourImageLink" src="">         
         <!-- <output id="list"></output> -->
     </div>
+
     <div id="middle" style="width:20%; display:table-cell; position: relative">
         <button onclick="showUserImage()">Analyse Image</button>
     </div>
+
     <div id="result" style="width:40%; display:table-cell; position: relative">
         <h3> Result </h3><br><br>
         <!-- Result picture-->
