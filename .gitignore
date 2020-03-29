@@ -130,6 +130,6 @@ dmypy.json
 Python Scripts/.vscode/*
 *.pickle
 *.DS_Store
-.DS_Store
+*/.DS_Store
 *._*
 */.vscode
