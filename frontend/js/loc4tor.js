@@ -35,6 +35,8 @@ document.getElementById('analyseButton').addEventListener('click', showResult);
 //document.getElementById('showUserImage').addEventListener('click', showUserImage);
 
 async function showResult() {
+    $.LoadingOverlay('show')
+
     let model = await tf.loadGraphModel(MODEL_URL);
 
     let img = new Image(244.0, 244.0);
@@ -49,7 +51,6 @@ async function showResult() {
     result.print()
     var winner = Math.max(...result.dataSync());
     var index = result.dataSync().indexOf(winner);
-    console.log(index)
 
     var sourceImageUrl;
     switch (index) {
@@ -71,6 +72,7 @@ async function showResult() {
         default:
             break;
     }
+    $.LoadingOverlay('hide')
 
     // Display the image.
     document.querySelector("#sourceImage").src = sourceImageUrl;
