@@ -133,3 +133,5 @@ Python Scripts/.vscode/*
 */.DS_Store
 *._*
 */.vscode
+
+*/node_modules

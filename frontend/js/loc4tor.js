@@ -26,9 +26,11 @@ function dateiauswahl(evt) {
     }
 }
 // Auf neue Auswahl reagieren und gegebenenfalls Funktion dateiauswahl neu ausführen.
-document.getElementById('files').addEventListener('change', dateiauswahl, false);
+//document.getElementById('files').addEventListener('change', dateiauswahl, false);
 
-document.getElementById('analize').addEventListener('click', showResult);
+document.getElementById('analyseButton').addEventListener('click', showResult);
+
+document.getElementById('showUserImage').addEventListener('click', showUserImage)
 
 async function showResult() {
     const model = await tf.loadLayersModel(MODEL_URL);
