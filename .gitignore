@@ -132,4 +132,4 @@ Python Scripts/.vscode/*
 *.DS_Store
 .DS_Store
 *._*
-.vscode/*
+*/.vscode
