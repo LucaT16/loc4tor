@@ -23,45 +23,50 @@ function dateiauswahl(evt) {
         })(f);
         // Bilder als Data URL auslesen.
         reader.readAsDataURL(f);
+        document.querySelector("#analyseButton").style = "";
+
     }
 }
 // Auf neue Auswahl reagieren und gegebenenfalls Funktion dateiauswahl neu ausführen.
-//document.getElementById('files').addEventListener('change', dateiauswahl, false);
+document.getElementById('files').addEventListener('change', dateiauswahl, false);
 
 document.getElementById('analyseButton').addEventListener('click', showResult);
 
-document.getElementById('showUserImage').addEventListener('click', showUserImage)
+//document.getElementById('showUserImage').addEventListener('click', showUserImage);
 
 async function showResult() {
-    const model = await tf.loadLayersModel(MODEL_URL);
+    let model = await tf.loadGraphModel(MODEL_URL);
 
-    let img = new Image(244, 244);
-    img.src = document.getElementById('vorschau').src;
+    let img = new Image(244.0, 244.0);
+    img.src = document.querySelector("#yourImageLink").src;
 
     let imgTensor = tf.browser.fromPixels(img);
-    let input = tf.zeros([1, 244, 244, 3]);
-    input[0] = imgTensor;
-    //input.reshape([-1, 244, 244, 3])
+
+    let input = imgTensor.expandDims();
+    input = tf.cast(input, 'float32');
+
     var result = model.predict(input);
+    result.print()
     var winner = Math.max(...result.dataSync());
     var index = result.dataSync().indexOf(winner);
+    console.log(index)
 
     var sourceImageUrl;
     switch (index) {
         case 0:
-            sourceImageUrl = "https://de.wikipedia.org/wiki/Eiffelturm#/media/Datei:Tour_Eiffel_Wikimedia_Commons.jpg";
+            sourceImageUrl = "./assets/BigBen.jpg";
             break;
         case 1:
-            sourceImageUrl = "Monday";
+            sourceImageUrl = "./assets/BrandenburgerTor.jpg";
             break;
         case 2:
             sourceImageUrl = "./assets/Eiffelturm.jpg";
             break;
         case 3:
-            sourceImageUrl = "Wednesday";
+            sourceImageUrl = "./assets/Freiheitsstatue.jpg";
             break;
         case 4:
-            sourceImageUrl = "Thursday";
+            sourceImageUrl = "./assets/GoldenGate.jpeg";
             break;
         default:
             break;
