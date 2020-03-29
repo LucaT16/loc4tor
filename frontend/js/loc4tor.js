@@ -76,6 +76,9 @@ async function showResult() {
 
     // Display the image.
     document.querySelector("#sourceImage").src = sourceImageUrl;
+
+     // Display the percentage.
+    document.querySelector("#percentage").style = "";
 };
 
 function showUserImage() {
