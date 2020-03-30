@@ -5,6 +5,8 @@ function dateiauswahl(evt) {
     var element;
     if (element = document.querySelector("#yourImageLink")) {
         element.src = "";
+        document.querySelector("#sourceImage").src = "";
+
     }
 
     var dateien = evt.target.files; // FileList object
@@ -24,15 +26,12 @@ function dateiauswahl(evt) {
         // Bilder als Data URL auslesen.
         reader.readAsDataURL(f);
         document.querySelector("#analyseButton").style = "";
-
     }
 }
 // Auf neue Auswahl reagieren und gegebenenfalls Funktion dateiauswahl neu ausführen.
 document.getElementById('files').addEventListener('change', dateiauswahl, false);
 
 document.getElementById('analyseButton').addEventListener('click', showResult);
-
-//document.getElementById('showUserImage').addEventListener('click', showUserImage);
 
 async function showResult() {
     $.LoadingOverlay('show')
@@ -48,7 +47,8 @@ async function showResult() {
     input = tf.cast(input, 'float32');
 
     var result = model.predict(input);
-    result.print()
+
+    //result.print()
     var winner = Math.max(...result.dataSync());
     var index = result.dataSync().indexOf(winner);
 
@@ -77,8 +77,8 @@ async function showResult() {
     // Display the image.
     document.querySelector("#sourceImage").src = sourceImageUrl;
 
-     // Display the percentage.
-    document.querySelector("#percentage").style = "";
+    // Display the percentage.
+    //document.querySelector("#percentage").style = "";
 };
 
 function showUserImage() {
