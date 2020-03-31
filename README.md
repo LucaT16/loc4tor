@@ -1,29 +1,49 @@
 # loc4tor
 
-Dies ist das Github Repo des loc4tors.
+Dies ist das Github Repo des loc4tors. Der loc4tor ist eine KI, welche anhand von Bildern die Sehenswürdigkeiten die auf diesen zusehen sind erkennt.
 
-## Contents
+Die folgenden Sehenwürdigkeiten kann der loc4tor erkennen:
+* Big Ben
+* Brandenburger Tor
+* Eiffelturm
+* Freiheitsstatue
+* Golden Gate Bridge
+
+
+**Table of contents**
 
 1. [Structure](#structure)
+ * [Frontend](#frontend)
+ * [PythonScripts](#python)
+ * [Bilder](#bilder)
 2. [Installation](#installation)
 3. [Development setup](#development-setup)
+  1. [Voraussetzungen](#voraus)
+  2. [Bilder generieren](#bildgen)
+  3. [Datenset generieren](#dataset)
+  4. [Model trainieren & testen](#trainmodel)
+  5. [Optional: Trainiertes Model in JSON konvertieren](#conv)
 4. [Contributing](#contributing)
 
 ## <a name="structure"></a> Structure
 
 Das Repository teilt sich in die 3 Bereiche: Frontend, PythonScript und Bilder.
 
-### Frontend
+<a name="frontend"></a> **Frontend**
 
 Der frontend-Ordner beinhaltet die Webanwendung des loc4tor. Neben den standartmäßigen Dateien für eine Website befindet sich hier auch das trainierte Tensorflow-CNN-Model als JSON-Datei.
 
-### PythonScripts
+<a name="python"></a> **PythonScripts**
 
 PythonScripts beinhaltet zum einen das Jupyter-Notebook des loc4tor. In diesem Notebook wird das CNN-Model mithilfe von Tensorflow und Keras erstellt und trainiert. Darüber hinaus enthält der Ordner zwei weitere Python-Skripts `ScaleImages.py` und `CreateDataset.py`.
 
 Das Skript `ScaleIamges.py` loopt über die Ordner der Sehenswürdigkeiten, welche sich im Bilder-Ordner befinden. Das Skript rotiert diese Bilder zehn mal zufällig und speichert sie, um den Datensatz der Bilder zu erhöhen.
 
 Das Skript `CreateDataset.py` generiert aus den im vorherigen Skript erstellten Bildern zwei binäre Pickle-Dateien, welche im loc4tor-Notebook als Tranings- bzw. Testdaten verwendet werden können.
+
+<a name="bilder"></a> **Bilder**
+
+Im Bilder-Ordner befinden sich die Basis-Bilder der Sehenswürdigkeiten. Diese werden benötigt um das Datenset des Models zu generieren.
 
 ## <a name="installation"></a> Installation
 
@@ -35,7 +55,7 @@ Hierfür muss lediglich der frontend-Ordner in das htdocs-Verzeichnis von XAMPP 
 
 Um selbst am Model zuarbeiten sind eine Reihe an Schritten notwendig.
 
-### Voraussetzungen
+### <a name="voraus"></a> 1. Voraussetzungen
 
 Für das Verwenden des Jupyter-Notebooks ist eine Anaconda-Umgebung mit bestimmten Modulen bzw. Paketen notwendig.
 Folgende Module/Pakete werden für die Verwendung des Juypter-Notebooks, sowie den Python Skripts benötigt:
@@ -47,29 +67,29 @@ Folgende Module/Pakete werden für die Verwendung des Juypter-Notebooks, sowie d
 * opencv
 * pillow
 
-#### 1. Bilder generieren
+#### <a name="bildgen"></a> 2. Bilder generieren
 
 Da weder die Pickle-Dateien, noch die rotierten Bilder in diesem Repo hochgeladen werden (aus speicher-technischen Gründen), müssen zunächst die notwenigen Bilder für das Datenset generiert werden. Navigiere hierfür in das Verzeichnis loc4tor/PythonScripts und führe das Skript `ScaleImages.py` aus:
 
 ```
 $ python ScaleImages.py
-
+```
 oder
-
+```
 $ python3 ScaleImages.py
 ```
 
 Das Skript loopt über die Verzeichnisse der Sehenswürdigkeiten im Ordner `Bilder` und erstellt jeweils ein weiteres Verzeichnis mit dem Namen der Sehenswürdigkeit gefolgt von einem "Cropped". Anschließend loopt das Skript über alle sich in den Verzeichnis befindlichen Bilder und rotiert diese zehn mal in einem zufälligen Winkel. Diese Bilder werden in den `Cropped` Verzeichnissen gespeichert. Auf diese Weise erhöht sich der Datensatz von etwa 100 Bildern pro Ort auf 1000+ Bilder pro Ort.
 
-#### 2. Dataset generieren
+#### <a name="dataset"></a> 3. Datenset generieren
 
 Ist das Skript durchlaufen, kann nun das Skript `CreateDataset.py` ausgeführt werden:
 
 ```
 $ python CreateDataset.py
-
+```
 oder
-
+```
 $ python3 CreateDataset.py
 ```
 
@@ -77,11 +97,11 @@ In `CreateDataset.py` wird über werden die im vorherigen Skript generierten Bil
 
 Anschließend wird über `training_data` geloopt, um die Bilder und die dazugehörigen Label in verschiedene Arrays zu speichern. Aus diesen Array werden dann die Dateien `x.pickle` und `y.pickle` generiert. `x.pickle` beinhaltet alle Bilder der Datensets und `x.pickle` die Label der Bilder in gleicher Reihenfolge.
 
-#### 3. Model trainieren & testen
+#### <a name="trainmodel"></a> 4. Model trainieren & testen
 
 Ist das Datenset in Form der Pickle-Dateien erstellt, kann das Model trainiert und getestet werden. Hierfür muss das Notebook `loc4tor.ipynb` in Jupyter-Notebook geöffnet werden. Das Notebook beinhaltet alle notwendigen Schritte, um das Model zu erstellen, trainieren und testen zu können. Anpassungen können in den einzelnen Schritten individuell vorgenommen werden.
 
-#### 4. Optional: Trainiertes Model in JSON konvertieren
+#### <a name="conv"></a> 5. Optional: Trainiertes Model in JSON konvertieren
 
 Um das neu trainierte Model für die Website zu verwenden, muss dieses zunächst gespeichert werden. Hierfür ist der letzte Codeblock des Notebooks auszuführen. Dieser speichert das trainierte Model im Verzeichnis *loc4tor/PythonScripts/models/loc4tor/1* zusammen mit den Gewichten.
 
@@ -97,7 +117,7 @@ Ist Tensorflow installiert kann der mitgebrachte tensorflowjs_converter verwende
 $ tensorflowjs_converter --input_format=tf_saved_model /path/to/repo/loc4tor/PythonScripts/models/loc4tor/1 /path/to/repo/loc4tor/Frontend/js/model
 ````
 
-Die Option --input_format gibt die Art des gespeicherten Models an, in diesem Fall ein Tensorflow SavedModel. Der erste Pfad zeigt auf das Verzeichnis, in welchem sich das zu konvertierende Model befindet. Dieses sollte sich, solange nicht beim Speichern im Notebook verändert, innerhalb des Repos unter *loc4otr/PythonScripts/models/loc4tor/1*.
+Die Option --input_format gibt die Art des gespeicherten Models an, in diesem Fall ein Tensorflow SavedModel. Der erste Pfad zeigt auf das Verzeichnis, in welchem sich das zu konvertierende Model befindet. Dieses sollte sich, solange nicht beim Speichern im Notebook verändert, innerhalb des Repos unter *loc4tor/PythonScripts/models/loc4tor/1*.
 
 Der zweite Pfad zeigt auf das Verzeichnis, in welchem das konvertierte Model gespeichert werden soll. Damit das JavaScript das konvertierte Model findet, muss dieses sich zwingend in dem oben angegebenen Verzeichnis befinden.
 
