@@ -19,11 +19,11 @@ Der frontend-Ordner beinhaltet die Webanwendung des loc4tor. Neben den standartm
 
 ### PythonScripts
 
-PythonScripts beinhaltet zum einen das Jupyter-Notebook des loc4tor. In diesem Notebook wird das CNN-Model mithilfe von Tensorflow und Keras erstellt und trainiert. Darüber hinaus enthält der Ordner zwei weitere Python-Skripts *ScaleImages.py* und *CreateDataset.py*.
+PythonScripts beinhaltet zum einen das Jupyter-Notebook des loc4tor. In diesem Notebook wird das CNN-Model mithilfe von Tensorflow und Keras erstellt und trainiert. Darüber hinaus enthält der Ordner zwei weitere Python-Skripts `ScaleImages.py` und `CreateDataset.py`.
 
-Das Skript *ScaleIamges.py* loopt über die Ordner der Sehenswürdigkeiten, welche sich im Bilder-Ordner befinden. Das Skript rotiert diese Bilder zehn mal zufällig und speichert sie, um den Datensatz der Bilder zu erhöhen.
+Das Skript `ScaleIamges.py` loopt über die Ordner der Sehenswürdigkeiten, welche sich im Bilder-Ordner befinden. Das Skript rotiert diese Bilder zehn mal zufällig und speichert sie, um den Datensatz der Bilder zu erhöhen.
 
-Das Skript *CreateDataset.py* generiert aus den im vorherigen Skript erstellten Bildern zwei binäre Pickle-Dateien, welche im loc4tor-Notebook als Tranings- bzw. Testdaten verwendet werden können.
+Das Skript `CreateDataset.py` generiert aus den im vorherigen Skript erstellten Bildern zwei binäre Pickle-Dateien, welche im loc4tor-Notebook als Tranings- bzw. Testdaten verwendet werden können.
 
 ## <a name="installation"></a> Installation
 
@@ -49,7 +49,7 @@ Folgende Module/Pakete werden für die Verwendung des Juypter-Notebooks, sowie d
 
 #### 1. Bilder generieren
 
-Da weder die Pickle-Dateien, noch die rotierten Bilder in diesem Repo hochgeladen werden (aus speicher-technischen Gründen), müssen zunächst die notwenigen Bilder für das Datenset generiert werden. Navigiere hierfür in das Verzeichnis loc4tor/PythonScripts und führe das Skript *ScaleImages.py* aus:
+Da weder die Pickle-Dateien, noch die rotierten Bilder in diesem Repo hochgeladen werden (aus speicher-technischen Gründen), müssen zunächst die notwenigen Bilder für das Datenset generiert werden. Navigiere hierfür in das Verzeichnis loc4tor/PythonScripts und führe das Skript `ScaleImages.py` aus:
 
 ```
 $ python ScaleImages.py
@@ -59,11 +59,11 @@ oder
 $ python3 ScaleImages.py
 ```
 
-Das Skript loopt über die Verzeichnisse der Sehenswürdigkeiten im Ordner *Bilder* und erstellt jeweils ein weiteres Verzeichnis mit dem Namen der Sehenswürdigkeit gefolgt von einem "Cropped". Anschließend loopt das Skript über alle sich in den Verzeichnis befindlichen Bilder und rotiert diese zehn mal in einem zufälligen Winkel. Diese Bilder werden in den *Cropped* Verzeichnissen gespeichert. Auf diese Weise erhöht sich der Datensatz von etwa 100 Bildern pro Ort auf 1000+ Bilder pro Ort.
+Das Skript loopt über die Verzeichnisse der Sehenswürdigkeiten im Ordner `Bilder` und erstellt jeweils ein weiteres Verzeichnis mit dem Namen der Sehenswürdigkeit gefolgt von einem "Cropped". Anschließend loopt das Skript über alle sich in den Verzeichnis befindlichen Bilder und rotiert diese zehn mal in einem zufälligen Winkel. Diese Bilder werden in den `Cropped` Verzeichnissen gespeichert. Auf diese Weise erhöht sich der Datensatz von etwa 100 Bildern pro Ort auf 1000+ Bilder pro Ort.
 
 #### 2. Dataset generieren
 
-Ist das Skript durchlaufen, kann nun das Skript *CreateDataset.py* ausgeführt werden:
+Ist das Skript durchlaufen, kann nun das Skript `CreateDataset.py` ausgeführt werden:
 
 ```
 $ python CreateDataset.py
@@ -73,13 +73,13 @@ oder
 $ python3 CreateDataset.py
 ```
 
-In *CreateDataset.py* wird über werden die im vorherigen Skript generierten Bilder (in Form eines Arrays der Pixel des Bildes) zusammen mit dem dazugehörigen Label (also um welche Sehenswürdigkeit es sich handelt) im Array *training_data[]* gespeichert. Dieses wird anschließend durchmischt, so dass die Bilder der Sehenswürdigkeiten in zufälliger Reihenfolge im Array vorhanden sind. Dies bewirkt, dass das Model später beim Trainieren nicht zuerst eine Sehenswürdigkeit trainiert, dann die nächste usw.
+In `CreateDataset.py` wird über werden die im vorherigen Skript generierten Bilder (in Form eines Arrays der Pixel des Bildes) zusammen mit dem dazugehörigen Label (also um welche Sehenswürdigkeit es sich handelt) im Array `training_data[]` gespeichert. Dieses wird anschließend durchmischt, so dass die Bilder der Sehenswürdigkeiten in zufälliger Reihenfolge im Array vorhanden sind. Dies bewirkt, dass das Model später beim Trainieren nicht zuerst eine Sehenswürdigkeit trainiert, dann die nächste usw.
 
-Anschließend wird über *training_data* geloopt, um die Bilder und die dazugehörigen Label in verschiedene Arrays zu speichern. Aus diesen Array werden dann die Dateien *x.pickle* und *y.pickle* generiert. *x.pickle* beinhaltet alle Bilder der Datensets und *x.pickle* die Label der Bilder in gleicher Reihenfolge.
+Anschließend wird über `training_data` geloopt, um die Bilder und die dazugehörigen Label in verschiedene Arrays zu speichern. Aus diesen Array werden dann die Dateien `x.pickle` und `y.pickle` generiert. `x.pickle` beinhaltet alle Bilder der Datensets und `x.pickle` die Label der Bilder in gleicher Reihenfolge.
 
 #### 3. Model trainieren & testen
 
-Ist das Datenset in Form der Pickle-Dateien erstellt, kann das Model trainiert und getestet werden. Hierfür muss das Notebook *loc4tor.ipynb* in Jupyter-Notebook geöffnet werden. Das Notebook beinhaltet alle notwendigen Schritte, um das Model zu erstellen, trainieren und testen zu können. Anpassungen können in den einzelnen Schritten individuell vorgenommen werden.
+Ist das Datenset in Form der Pickle-Dateien erstellt, kann das Model trainiert und getestet werden. Hierfür muss das Notebook `loc4tor.ipynb` in Jupyter-Notebook geöffnet werden. Das Notebook beinhaltet alle notwendigen Schritte, um das Model zu erstellen, trainieren und testen zu können. Anpassungen können in den einzelnen Schritten individuell vorgenommen werden.
 
 #### 4. Optional: Trainiertes Model in JSON konvertieren
 
