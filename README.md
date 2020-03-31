@@ -1,14 +1,15 @@
 # loc4tor
 
 Dies ist das Github Repo des loc4tors.
- 
+
 ## Contents
 
-1. Repo-Inhalt
-2. Installation
-3. Development setup
+1. [Structure](#structure)
+2. [Installation](#installation)
+3. [Development setup](#development-setup)
+4. [Contributing](#contributing)
 
-## Repo-Inhalt
+## <a name="structure"></a> Structure
 
 Das Repository teilt sich in die 3 Bereiche: Frontend, PythonScript und Bilder.
 
@@ -18,21 +19,25 @@ Der frontend-Ordner beinhaltet die Webanwendung des loc4tor. Neben den standartm
 
 ### PythonScripts
 
-PythonScripts beinhaltet zum einen das Jupyter-Notebook des loc4tor. In diesem Notebook wird das CNN-Model mithilfe von Tensorflow und Keras erstellt und trainiert. Darüber hinaus enthält der Ordner zwei weitere Python-Skripts *ScaleImages.py* und *CreateDataset.py*. 
+PythonScripts beinhaltet zum einen das Jupyter-Notebook des loc4tor. In diesem Notebook wird das CNN-Model mithilfe von Tensorflow und Keras erstellt und trainiert. Darüber hinaus enthält der Ordner zwei weitere Python-Skripts *ScaleImages.py* und *CreateDataset.py*.
+
 Das Skript *ScaleIamges.py* loopt über die Ordner der Sehenswürdigkeiten, welche sich im Bilder-Ordner befinden. Das Skript rotiert diese Bilder zehn mal zufällig und speichert sie, um den Datensatz der Bilder zu erhöhen.
-Das Skript *CreateDataset.py* generiert aus den im vorherigen Skript erstellten Bildern zwei binäre Pickle-Dateien, welche im loc4tor-Notebook als Tranings- bzw. Testdaten verwendet werden können. 
 
-## Installation
+Das Skript *CreateDataset.py* generiert aus den im vorherigen Skript erstellten Bildern zwei binäre Pickle-Dateien, welche im loc4tor-Notebook als Tranings- bzw. Testdaten verwendet werden können.
 
-Um die Website und die Funktionalität der KI zu testen muss der Frontend-Ordner auf dem localhost gehostet werden. Hierfür bietet sich bspw. [XAMPP](https://www.apachefriends.org/de/download.html) an. Hierfür muss lediglich der frontend-Ordner in das htdocs-Verzeichnis von XAMPP kopiert werden, dann ist die Website unter http://localhost:8080/frontend/ erreichbar und verwendbar. Eine Anleitung zum einrichten von XAMPP finden sie [hier](https://wiki.selfhtml.org/wiki/Webserver/lokal_einrichten).
+## <a name="installation"></a> Installation
 
-## Development setup
+Um die Website und die Funktionalität der KI zu testen muss der Frontend-Ordner auf dem localhost gehostet werden. Hierfür bietet sich bspw. [XAMPP](https://www.apachefriends.org/de/download.html) an.
+
+Hierfür muss lediglich der frontend-Ordner in das htdocs-Verzeichnis von XAMPP kopiert werden, dann ist die Website unter http://localhost:8080/frontend/ erreichbar und verwendbar. Eine Anleitung zum einrichten von XAMPP finden sie [hier](https://wiki.selfhtml.org/wiki/Webserver/lokal_einrichten).
+
+## <a name="development-setup"></a> Development setup
 
 Um selbst am Model zuarbeiten sind eine Reihe an Schritten notwendig.
 
-### Voraussetzungen 
+### Voraussetzungen
 
-Für das Verwenden des Jupyter-Notebooks ist eine Anaconda-Umgebung mit bestimmten Modulen bzw. Paketen notwendig. 
+Für das Verwenden des Jupyter-Notebooks ist eine Anaconda-Umgebung mit bestimmten Modulen bzw. Paketen notwendig.
 Folgende Module/Pakete werden für die Verwendung des Juypter-Notebooks, sowie den Python Skripts benötigt:
 * Python
 * Tensorflow
@@ -49,7 +54,7 @@ Da weder die Pickle-Dateien, noch die rotierten Bilder in diesem Repo hochgelade
 ```
 $ python ScaleImages.py
 
-oder 
+oder
 
 $ python3 ScaleImages.py
 ```
@@ -58,66 +63,50 @@ Das Skript loopt über die Verzeichnisse der Sehenswürdigkeiten im Ordner *Bild
 
 #### 2. Dataset generieren
 
-Ist das Skript durchlaufen, kann nun das Skript *CreateDataset.py* ausgeführt werden: 
+Ist das Skript durchlaufen, kann nun das Skript *CreateDataset.py* ausgeführt werden:
 
 ```
 $ python CreateDataset.py
 
-oder 
+oder
 
 $ python3 CreateDataset.py
 ```
 
-In *CreateDataset.py* wird über werden die im vorherigen Skript generierten Bilder (in Form eines Arrays der Pixel des Bildes) zusammen mit dem dazugehörigen Label (also um welche Sehenswürdigkeit es sich handelt) im Array *training_data[]* gespeichert. Dieses wird anschließend durchmischt, so dass die Bilder der Sehenswürdigkeiten in zufälliger Reihenfolge im Array vorhanden sind. Dies bewirkt, dass das Model später beim Trainieren nicht zuerst eine Sehenswürdigkeit trainiert, dann die nächste usw. 
-Anschließend wird über *training_data* geloopt, um die Bilder und die dazugehörigen Label in verschiedene Arrays zu speichern. Aus diesen Array werden dann die Dateien *x.pickle* und *y.pickle* generiert. *x.pickle* beinhaltet alle Bilder der Datensets und *x.pickle* die Label der Bilder in gleicher Reihenfolge. 
+In *CreateDataset.py* wird über werden die im vorherigen Skript generierten Bilder (in Form eines Arrays der Pixel des Bildes) zusammen mit dem dazugehörigen Label (also um welche Sehenswürdigkeit es sich handelt) im Array *training_data[]* gespeichert. Dieses wird anschließend durchmischt, so dass die Bilder der Sehenswürdigkeiten in zufälliger Reihenfolge im Array vorhanden sind. Dies bewirkt, dass das Model später beim Trainieren nicht zuerst eine Sehenswürdigkeit trainiert, dann die nächste usw.
+
+Anschließend wird über *training_data* geloopt, um die Bilder und die dazugehörigen Label in verschiedene Arrays zu speichern. Aus diesen Array werden dann die Dateien *x.pickle* und *y.pickle* generiert. *x.pickle* beinhaltet alle Bilder der Datensets und *x.pickle* die Label der Bilder in gleicher Reihenfolge.
 
 #### 3. Model trainieren & testen
 
-Ist das Datenset in Form der Pickle-Dateien erstellt, kann das Model trainiert und getestet werden. Hierfür muss das Notebook *loc4tor.ipynb* in Jupyter-Notebook geöffnet werden. Das Notebook beinhaltet alle notwendigen Schritte, um das Model zu erstellen, trainieren und testen zu können. Anpassungen können in den einzelnen Schritten individuell vorgenommen werden. 
+Ist das Datenset in Form der Pickle-Dateien erstellt, kann das Model trainiert und getestet werden. Hierfür muss das Notebook *loc4tor.ipynb* in Jupyter-Notebook geöffnet werden. Das Notebook beinhaltet alle notwendigen Schritte, um das Model zu erstellen, trainieren und testen zu können. Anpassungen können in den einzelnen Schritten individuell vorgenommen werden.
 
-#### 4. 
+#### 4. Optional: Trainiertes Model in JSON konvertieren
 
+Um das neu trainierte Model für die Website zu verwenden, muss dieses zunächst gespeichert werden. Hierfür ist der letzte Codeblock des Notebooks auszuführen. Dieser speichert das trainierte Model im Verzeichnis loc4tor/PythonScripts/models/loc4tor/1 zusammen mit den Gewichten.
 
-```sh
-make install
-npm test
+Um das Model in eine für die Website lesbare JSON-Datei zu konvertieren wird Tensorflow.js benötigt. Dies kann mithilfe von npm installiert werden:
+
+```
+$ npm install @tensorflow/tfjs
 ```
 
-## Release History
+Ist Tensorflow installiert kann der mitgebrachte tensorflowjs_converter verwendet werden. Um das Model zu konvertieren, muss folgender Befehl ausgeführt werden:
 
-* 0.2.1
-    * CHANGE: Update docs (module code remains unchanged)
-* 0.2.0
-    * CHANGE: Remove `setDefaultXYZ()`
-    * ADD: Add `init()`
-* 0.1.1
-    * FIX: Crash when calling `baz()` (Thanks @GenerousContributorName!)
-* 0.1.0
-    * The first proper release
-    * CHANGE: Rename `foo()` to `bar()`
-* 0.0.1
-    * Work in progress
+````
+$ tensorflowjs_converter --input_format=tf_saved_model /path/to/repo/loc4tor/PythonScripts/models/loc4tor/1 /path/to/repo/loc4tor/Frontend/js/model
+````
 
-## Meta
+Die Option --input_format gibt die Art des gespeicherten Models an, in diesem Fall ein Tensorflow SavedModel. Der erste Pfad zeigt auf das Verzeichnis, in welchem sich das zu konvertierende Model befindet. Dieses sollte sich, solange nicht beim Speichern im Notebook verändert, innerhalb des Repos unter *loc4otr/PythonScripts/models/loc4tor/1*.
 
-Your Name – [@YourTwitter](https://twitter.com/dbader_org) – YourEmail@example.com
+Der zweite Pfad zeigt auf das Verzeichnis, in welchem das konvertierte Model gespeichert werden soll. Damit das JavaScript das konvertierte Model findet, muss dieses sich zwingend in dem oben angegebenen Verzeichnis befinden.
 
-Distributed under the XYZ license. See ``LICENSE`` for more information.
 
-[https://github.com/yourname/github-link](https://github.com/dbader/)
 
-## Contributing
+## <a name="contributing"></a> Contributing
 
-1. Fork it (<https://github.com/yourname/yourproject/fork>)
+1. Fork it (<https://github.com/LucaT16/loc4tor/fork>)
 2. Create your feature branch (`git checkout -b feature/fooBar`)
 3. Commit your changes (`git commit -am *Add some fooBar*`)
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
-
-<!-- Markdown link & img dfn*s -->
-[npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/datadog-metrics
-[npm-downloads]: https://img.shields.io/npm/dm/datadog-metrics.svg?style=flat-square
-[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
-[wiki]: https://github.com/yourname/yourproject/wiki
