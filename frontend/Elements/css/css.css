@@ -1,14 +1,5 @@
 .inputfile {
-	width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-    z-index: -1;
-    font-size: 1.25em;
-    font-weight: 700;
-    color: white;
-    display: inline-block;
+    display: none;
 }
 
 
@@ -34,4 +25,20 @@
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
+    color: white;
+    border-radius: 15px;
+  }
+
+  .analyse {
+    border: 1px solid black;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    color: black;
+    border-radius: 15px;
+  }
+
+
+  img {
+    border-radius: 8px;
   }

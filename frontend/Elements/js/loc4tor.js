@@ -1,8 +1,9 @@
 const MODEL_URL = 'js/model/model.json';
 
-$('#file-upload').change(function() {
+
+$('#files').change(function() {
     var i = $(this).prev('label').clone();
-    var file = $('#file-upload')[0].files[0].name;
+    var file = $('#files')[0].files[0].name;
     $(this).prev('label').text(file);
   });
 

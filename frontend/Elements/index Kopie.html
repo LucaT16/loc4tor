@@ -14,21 +14,14 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <!-- Das neueste kompilierte und minimierte JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
       
         
         <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"></script>
         <script type="module" src="./js/loc4tor.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
 		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-		<script src="js/jquery.min.js"></script>
-		<script src="js/jquery.dropotron.min.js"></script>
-		<script src="js/jquery.scrollgress.min.js"></script>
-		<script src="js/jquery.scrolly.min.js"></script>
-		<script src="js/jquery.slidertron.min.js"></script>
-		<script src="js/skel.min.js"></script>
-		<script src="js/skel-layers.min.js"></script>
-		<script src="js/init.js"></script>
+		
 		
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -43,42 +36,24 @@
     <!-- Header -->
 			<header id="header" class="alt skel-layers-fixed">
 				<h1><a href="index Kopie.html">loc4tor <span>by Tim, Robert, Simon, Luca, Jenny, Philipp</span></a></h1>
-			<!-- <nav id="nav">
-					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li>
-							<a href="" class="icon fa-angle-down">Layouts</a>
-							<ul>
-								<li><a href="left-sidebar.html">Left Sidebar</a></li>
-								<li><a href="right-sidebar.html">Right Sidebar</a></li>
-								<li><a href="no-sidebar.html">No Sidebar</a></li>
-								<li>
-									<a href="">Submenu</a>
-									<ul>
-										<li><a href="#">Option 1</a></li>
-										<li><a href="#">Option 2</a></li>
-										<li><a href="#">Option 3</a></li>
-										<li><a href="#">Option 4</a></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li><a href="elements.html">Elements</a></li>
-					</ul>
-				</nav>
-				-->
+
 			</header>
    <!-- Banner -->
    <section id="banner">
     <div class="inner">
         <h2>Loc4tor</h2>
-        <p>Unser Service ermöglicht es Ihnen, den Ort Ihres ausgewählten Bildes zu bestimmten.</p>
-        <p>Bitte laden Sie Ihr Bild hierunter hoch:</p>
+        <p>Unser Service ermöglicht es Ihnen, den Ort Ihres ausgewählten Bildes zu bestimmen.</p>
+        
         <ul class="actions">
-            <input  class="inputfile" type="file" id="files" name="files[]" multiple />
-            <label for="files" class="label label-default">Wähle ein Bild</label>
-            
+
+            <label for="files" class="custom-file-upload">
+                <i class="fa fa-cloud-upload"></i> Wähle ein Bild
+              </label>
+              <input id="files" type="file"  style="display:none;" name="files[]" multiple >
+          
         </ul>
+
+        <button id="analyseButton" class="analyse" style="display: none">Bild analysieren</button>
     </div>
     
 
@@ -86,62 +61,49 @@
     
 </section>
 
-<form>
-    <label for="file-upload" class="custom-file-upload">
-      <i class="fa fa-cloud-upload"></i> Upload Image
-    </label>
-    <input id="file-upload" name='upload_cont_img' type="file" style="display:none;">
-  </form>
-    <br> So far the following landmarks are integrated already:
-    <br>
-    <br>Eiffelturm
-    <br>Brandenburger Tor
-    <br>Freiheitstatue
-    <br>Colosseum
-    <br>Big Ben
-    <br>Golden Gate Bridge
-    <br>
-    <br>Enter the URL to an image or upload you own image that includes a listed landmark.<br>
-    <strong> Go, give it a try! </strong>
-    <br><br>
-    <div>
-        <!-- <form action="/action_page.php">
-            <input type="url" id="picUrl" value="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_1024,h_678/https://www.56paris.com/wp-content/uploads/2019/06/New-Eiffel-Tower-plans.jpg" placeholder="Link to your picture here" />
-        </form> -->
-        <input class="button button5" type="file" id="files" name="files[]" multiple />
-    </div>
 
-    <br><br>
 
-    <div id="wrapper" style="width: 100%; display: table; align-items: center; justify-content: center ">
-        <div id="yourImage" style="width:40%; display:table-cell; position: relative">
-            <h3> Your Image</h3><br><br>
-            <img width="480px" id="yourImageLink" src="">
-            <!-- <output id="list"></output> -->
+
+    <section id="one" >
+        <div class="container">
+            <header class="major">
+                <!--<h2>Lorem ipsum dolor</h2>
+                <p>Ipsum dolor tempus commodo turpis adipiscing adipiscing in tempor placerat<br />
+                sed amet accumsan enim lorem sem turpis ut. Massa amet erat accumsan curae<br />
+                blandit porttitor faucibus in nisl nisi volutpat massa mi non nascetur.</p>
+                -->
+                
+            </header>
+
+           
         </div>
 
-        <div id="middle" style="width:20%; display:table-cell; position: relative">
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <button id="analyseButton" style="display: none">Analyse Image</button>
-            <br>
-            <br>
-            <br>
-            <br>
-            <!-- <h4 id="percentage" style="display: none">≈ 80
-                <br> accuracy </h4> -->
+        <div class="container">
+    
+            <div class="row">
+                <div class="col-lg-6">
+                    <div  style="border-radius: 8px"id="yourImage">
+                        <h3 class="col-xs-12 center-block text-center"> Ihr Bild</h3><br><br>
+                        <img style="border-radius: 8px" class="col-xs-12 center-block text-center" id="yourImageLink" src="">
+                        <!-- <output id="list"></output> -->
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div style="border-radius: 8px"id="result">
+                        <h3 class="col-xs-12 center-block text-center"> Ergebnis </h3><br><br>
+                        <!-- Result picture-->
+                        <img style="border-radius: 8px" class="col-xs-12 center-block text-center" id="sourceImage" >
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div id="result" style="width:40%; display:table-cell; position: relative">
-            <h3> Result </h3><br><br>
-            <!-- Result picture-->
-            <img id="sourceImage" width="480px" />
+    
 
-        </div>
-    </div>
+
+        
+    </section>
+    
 
 </body>
 
