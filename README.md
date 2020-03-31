@@ -18,11 +18,13 @@ Die folgenden Sehenwürdigkeiten kann der loc4tor erkennen:
  * [Bilder](#bilder)
 2. [Installation](#installation)
 3. [Development setup](#development-setup)
+
   1. [Voraussetzungen](#voraus)
   2. [Bilder generieren](#bildgen)
   3. [Datenset generieren](#dataset)
   4. [Model trainieren & testen](#trainmodel)
   5. [Optional: Trainiertes Model in JSON konvertieren](#conv)
+  
 4. [Contributing](#contributing)
 
 ## <a name="structure"></a> Structure
