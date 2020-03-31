@@ -83,7 +83,7 @@ Ist das Datenset in Form der Pickle-Dateien erstellt, kann das Model trainiert u
 
 #### 4. Optional: Trainiertes Model in JSON konvertieren
 
-Um das neu trainierte Model für die Website zu verwenden, muss dieses zunächst gespeichert werden. Hierfür ist der letzte Codeblock des Notebooks auszuführen. Dieser speichert das trainierte Model im Verzeichnis loc4tor/PythonScripts/models/loc4tor/1 zusammen mit den Gewichten.
+Um das neu trainierte Model für die Website zu verwenden, muss dieses zunächst gespeichert werden. Hierfür ist der letzte Codeblock des Notebooks auszuführen. Dieser speichert das trainierte Model im Verzeichnis *loc4tor/PythonScripts/models/loc4tor/1* zusammen mit den Gewichten.
 
 Um das Model in eine für die Website lesbare JSON-Datei zu konvertieren wird Tensorflow.js benötigt. Dies kann mithilfe von npm installiert werden:
 
