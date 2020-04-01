@@ -9,6 +9,10 @@
 
 /* Basic */
 
+	html {
+	scroll-behavior: smooth;
+   }
+   
 	body {
 		background: #fff;
 	}
@@ -34,15 +38,19 @@
 		line-height: 1.75em;
 	}
 
+	#down {
+	
+		padding-bottom: 2%;
+	   } 
+
 	a {
 		-moz-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 		-webkit-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 		-o-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 		-ms-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 		transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
-		color: #e0555a;
+		color: #000000;
 		text-decoration: none;
-		border-bottom: dotted 1px;
 	}
 
 		a:hover {
@@ -1230,18 +1238,20 @@
 
 	#banner {
 		background-attachment: scroll,						fixed;
-		background-color: #494d53;
-		background-image: url("images/overlay.png"), url("../images/banner.jpg");
+		
+		background-image: url("../images/banner2.jpeg");
 		background-position: top left,					center center;
 		background-repeat: repeat,						no-repeat;
 		background-size: auto,						cover;
-		color: #d1d2d4;
+		color: #6b6b6b;
 		padding: 16em 0;
 		position: relative;
 		text-align: center;
+		font-size: medium;
 	}
 
 		#banner:after {
+			background-image: url("./images/banner2.jpeg");
 			-moz-transition: opacity 2s ease-in-out;
 			-webkit-transition: opacity 2s ease-in-out;
 			-o-transition: opacity 2s ease-in-out;
@@ -1289,6 +1299,7 @@
 			line-height: 1.25em;
 			margin: 0 0 0.5em 0;
 			padding: 0;
+			color: rgb(37, 37, 37);
 		}
 
 		#banner p {

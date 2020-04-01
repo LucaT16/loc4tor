@@ -8,7 +8,7 @@
     font-weight: 700;
     width: 12em;
   
-    color: white;
+    color:black;
     cursor: pointer;
     display: inline-block;
     text-align: center;
@@ -21,21 +21,22 @@
 
 
 .custom-file-upload {
-    border: 1px solid #ccc;
-    display: inline-block;
-    padding: 6px 12px;
-    cursor: pointer;
-    color: white;
-    border-radius: 15px;
-  }
-
-  .analyse {
-    border: 1px solid black;
+    border: 1.5px solid black;
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
     color: black;
     border-radius: 15px;
+  }
+
+  .analyse {
+    border: 1.5px solid black;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    color: black;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
   }
 
 
