@@ -1,5 +1,12 @@
 const MODEL_URL = 'js/model/model.json';
 
+
+$('#files').change(function() {
+    var i = $(this).prev('label').clone();
+    var file = $('#files')[0].files[0].name;
+    $(this).prev('label').text(file);
+  });
+
 function dateiauswahl(evt) {
     //cleart vorschau wenn schon ein Bild hochgeladen wurde
     var element;
@@ -21,6 +28,7 @@ function dateiauswahl(evt) {
             return function(e) {
                 // erzeuge Thumbnails.
                 document.querySelector("#yourImageLink").src = e.target.result;
+                $("#text4").html("Ihr Bild");
             };
         })(f);
         // Bilder als Data URL auslesen.
@@ -53,21 +61,27 @@ async function showResult() {
     var index = result.dataSync().indexOf(winner);
 
     var sourceImageUrl;
+    var place ="123";
     switch (index) {
         case 0:
-            sourceImageUrl = "./assets/BigBen.jpg";
+            sourceImageUrl = "./images/BigBen.jpg";
+            place = "Big Ben";
             break;
         case 1:
-            sourceImageUrl = "./assets/BrandenburgerTor.jpg";
+            sourceImageUrl = "./images/BrandenburgerTor.jpg";
+            place = "Brandenburger Tor";
             break;
         case 2:
-            sourceImageUrl = "./assets/Eiffelturm.jpg";
+            sourceImageUrl = "./images/Eiffelturm.jpg";
+            place = "Eiffelturm"
             break;
         case 3:
-            sourceImageUrl = "./assets/Freiheitsstatue.jpg";
+            sourceImageUrl = "./images/Freiheitsstatue.jpg";
+            place = "Freiheitsstatue"
             break;
         case 4:
-            sourceImageUrl = "./assets/GoldenGate.jpeg";
+            sourceImageUrl = "./images/GoldenGate.jpeg";
+            place = "Golden Gate Bridge"
             break;
         default:
             break;
@@ -76,6 +90,9 @@ async function showResult() {
 
     // Display the image.
     document.querySelector("#sourceImage").src = sourceImageUrl;
+    $("#text1").html("Ihr Bild wurde hier aufgenommen:");
+    $("#text2").html(place);
+    $("#text3").html("Ergebnis");
 
     // Display the percentage.
     //document.querySelector("#percentage").style = "";
@@ -84,7 +101,6 @@ async function showResult() {
 function showUserImage() {
     var userImageUrl = document.getElementById('picUrl').value;
     document.querySelector("#yourImageLink").src = userImageUrl;
-
     document.querySelector("#analyseButton").style = "";
-
+    
 }

@@ -1,12 +1,5 @@
 const MODEL_URL = 'js/model/model.json';
 
-
-$('#files').change(function() {
-    var i = $(this).prev('label').clone();
-    var file = $('#files')[0].files[0].name;
-    $(this).prev('label').text(file);
-  });
-
 function dateiauswahl(evt) {
     //cleart vorschau wenn schon ein Bild hochgeladen wurde
     var element;
