@@ -1,0 +1,45 @@
+.inputfile {
+    display: none;
+}
+
+
+.inputfile + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    width: 12em;
+  
+    color:black;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: rgb(71, 3, 3);
+}
+
+
+.custom-file-upload {
+    border: 1.5px solid black;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    color: black;
+    border-radius: 15px;
+  }
+
+  .analyse {
+    border: 1.5px solid black;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    color: black;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+
+  img {
+    border-radius: 8px;
+  }
