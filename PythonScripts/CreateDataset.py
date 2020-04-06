@@ -7,7 +7,7 @@ import pickle
 DATADIR = "../Bilder/"
 CATEGORIES = ["BigBen", "BrandenburgerTor", "Eiffelturm", "Freiheitstatue", "GoldenGateBridge"]
 CROPPED = "Cropped"
-IMG_SIZE = 244
+IMG_SIZE = 128
 training_data = []
 
 #loop over relevant images
