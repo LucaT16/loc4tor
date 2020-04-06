@@ -34,7 +34,7 @@ for features, label in training_data:
     x.append(features)
     y.append(label)
 
-x = np.array(x).reshape(-1, IMG_SIZE, IMG_SIZE, 1)
+x = np.array(x).reshape(-1, IMG_SIZE, IMG_SIZE, 3)
 y = np.array(y)
 
 pickle_out = open("x.pickle", "wb")
