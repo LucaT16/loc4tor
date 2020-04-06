@@ -18,7 +18,7 @@ for category in CATEGORIES:
     for img in os.listdir(path):
         try:
             #resize the image and save it in training_data
-            img_array = cv2.imread(os.path.join(path,img), cv2.IMREAD_GRAYSCALE)
+            img_array = cv2.imread(os.path.join(path,img))
             resized_array = cv2.resize(img_array, (IMG_SIZE, IMG_SIZE))
             training_data.append([resized_array, class_num])
         except Exception as e:
