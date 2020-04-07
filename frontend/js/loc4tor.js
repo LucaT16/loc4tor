@@ -1,11 +1,12 @@
 const MODEL_URL = 'js/model/model.json';
+const IMG_SIZE = 128.0;
 
 
 $('#files').change(function() {
     var i = $(this).prev('label').clone();
     var file = $('#files')[0].files[0].name;
     $(this).prev('label').text(file);
-  });
+});
 
 function dateiauswahl(evt) {
     //cleart vorschau wenn schon ein Bild hochgeladen wurde
@@ -46,22 +47,24 @@ async function showResult() {
 
     let model = await tf.loadGraphModel(MODEL_URL);
 
-    let img = new Image(244.0, 244.0);
+    let img = new Image(IMG_SIZE, IMG_SIZE);
     img.src = document.querySelector("#yourImageLink").src;
 
-    let imgTensor = tf.browser.fromPixels(img);
-
-    let input = imgTensor.expandDims();
+    var imgTensor = tf.browser.fromPixels(img);
+    imgTensor = tf.reverse(imgTensor, -1)
+    var input = imgTensor.expandDims();
     input = tf.cast(input, 'float32');
 
-    var result = model.predict(input);
+    input.print()
 
-    //result.print()
+    var result = model.predict(input);
+    result.print()
+
     var winner = Math.max(...result.dataSync());
     var index = result.dataSync().indexOf(winner);
 
     var sourceImageUrl;
-    var place ="123";
+    var place = "";
     switch (index) {
         case 0:
             sourceImageUrl = "./images/BigBen.jpg";
@@ -102,5 +105,5 @@ function showUserImage() {
     var userImageUrl = document.getElementById('picUrl').value;
     document.querySelector("#yourImageLink").src = userImageUrl;
     document.querySelector("#analyseButton").style = "";
-    
+
 }

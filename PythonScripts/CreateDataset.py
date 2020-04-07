@@ -7,7 +7,7 @@ import pickle
 DATADIR = "../Bilder/"
 CATEGORIES = ["BigBen", "BrandenburgerTor", "Eiffelturm", "Freiheitstatue", "GoldenGateBridge"]
 CROPPED = "Cropped"
-IMG_SIZE = 244
+IMG_SIZE = 128
 training_data = []
 
 #loop over relevant images
@@ -20,9 +20,12 @@ for category in CATEGORIES:
             #resize the image and save it in training_data
             img_array = cv2.imread(os.path.join(path,img))
             resized_array = cv2.resize(img_array, (IMG_SIZE, IMG_SIZE))
+            print(resized_array)
+            break
             training_data.append([resized_array, class_num])
         except Exception as e:
             print(e)
+        break
     print("Info: Done with appending {}".format(category))
 random.shuffle(training_data)
 
