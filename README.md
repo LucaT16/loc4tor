@@ -8,7 +8,10 @@ Die folgenden Sehenwürdigkeiten kann der loc4tor erkennen:
 * Eiffelturm
 * Freiheitsstatue
 * Golden Gate Bridge
-
+* Akropolis
+* Buckingham Palace
+* Colosseum
+* Mannheimer Wasserturm
 
 **Table of contents**
 
