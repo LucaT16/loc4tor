@@ -86,6 +86,22 @@ async function showResult() {
             sourceImageUrl = "./images/GoldenGate.jpeg";
             place = "Golden Gate Bridge"
             break;
+        case 5:
+            sourceImageUrl = "./images/Akropolis.jpg";
+            place = "Akropolis";
+            break;
+        case 6:
+            sourceImageUrl = "./images/BuckinghamPalace.jpg";
+            place = "Buckingham Palace";
+            break;
+        case 7:
+            sourceImageUrl = "./images/Colosseum.jpg";
+            place = "Colosseum";
+            break;
+        case 8:
+            sourceImageUrl = "./images/Wasserturm.jpg";
+            place = "Mannheimer Wassertutm";
+            break;
         default:
             break;
     }
