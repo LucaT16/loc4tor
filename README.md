@@ -1,7 +1,6 @@
 # loc4tor
 
-Dies ist das Github Repo des loc4tors. Der loc4tor ist eine KI, welche anhand von Bildern die Sehenswürdigkeiten die auf diesen zusehen sind erkennt.
-
+Der loc4tor ist eine KI, welche Sehenswürdigkeiten auf Bildern erkennt. 
 Die folgenden Sehenwürdigkeiten kann der loc4tor erkennen:
 * Big Ben
 * Brandenburger Tor
