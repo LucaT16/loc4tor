@@ -1,7 +1,6 @@
 const MODEL_URL = 'js/model/model.json';
 const IMG_SIZE = 128.0;
 
-
 $('#files').change(function() {
     var i = $(this).prev('label').clone();
     var file = $('#files')[0].files[0].name;
@@ -14,10 +13,9 @@ function dateiauswahl(evt) {
     if (element = document.querySelector("#yourImageLink")) {
         element.src = "";
         document.querySelector("#sourceImage").src = "";
-
     }
 
-    var dateien = evt.target.files; // FileList object
+    var dateien = evt.target.files;
     // Auslesen der gespeicherten Dateien durch Schleife
     for (var i = 0, f; f = dateien[i]; i++) {
         // nur Bild-Dateien
@@ -45,81 +43,70 @@ document.getElementById('analyseButton').addEventListener('click', showResult);
 async function showResult() {
     $.LoadingOverlay('show')
 
+    //Model laden
     let model = await tf.loadGraphModel(MODEL_URL);
 
+    //Bilddaten laden
     let img = new Image(IMG_SIZE, IMG_SIZE);
     img.src = document.querySelector("#yourImageLink").src;
-
     var imgTensor = tf.browser.fromPixels(img);
     imgTensor = tf.reverse(imgTensor, -1)
     var input = imgTensor.expandDims();
     input = tf.cast(input, 'float32');
 
-    input.print()
-
+    //Bild predicten
     var result = model.predict(input);
-    result.print()
-
     var winner = Math.max(...result.dataSync());
     var index = result.dataSync().indexOf(winner);
 
+    //Ergebnis ausgeben
     var sourceImageUrl;
     var place = "";
     switch (index) {
         case 0:
-            sourceImageUrl = "./images/BigBen.jpg";
+            sourceImageUrl = "./assets/BigBen.jpg";
             place = "Big Ben";
             break;
         case 1:
-            sourceImageUrl = "./images/BrandenburgerTor.jpg";
+            sourceImageUrl = "./assets/BrandenburgerTor.jpg";
             place = "Brandenburger Tor";
             break;
         case 2:
-            sourceImageUrl = "./images/Eiffelturm.jpg";
+            sourceImageUrl = "./assets/Eiffelturm.jpg";
             place = "Eiffelturm"
             break;
         case 3:
-            sourceImageUrl = "./images/Freiheitsstatue.jpg";
+            sourceImageUrl = "./assets/Freiheitsstatue.jpg";
             place = "Freiheitsstatue"
             break;
         case 4:
-            sourceImageUrl = "./images/GoldenGate.jpeg";
+            sourceImageUrl = "./assets/GoldenGate.jpeg";
             place = "Golden Gate Bridge"
             break;
         case 5:
-            sourceImageUrl = "./images/Akropolis.jpg";
+            sourceImageUrl = "./assets/Akropolis.jpg";
             place = "Akropolis";
             break;
         case 6:
-            sourceImageUrl = "./images/BuckinghamPalace.jpg";
+            sourceImageUrl = "./assets/BuckinghamPalace.jpg";
             place = "Buckingham Palace";
             break;
         case 7:
-            sourceImageUrl = "./images/Colosseum.jpg";
+            sourceImageUrl = "./assets/Colosseum.jpg";
             place = "Colosseum";
             break;
         case 8:
-            sourceImageUrl = "./images/Wasserturm.jpg";
-            place = "Mannheimer Wassertutm";
+            sourceImageUrl = "./assets/Wasserturm.jpg";
+            place = "Mannheimer Wasserturm";
             break;
         default:
             break;
     }
     $.LoadingOverlay('hide')
 
-    // Display the image.
+    // Bild darstellen
     document.querySelector("#sourceImage").src = sourceImageUrl;
     $("#text1").html("Ihr Bild wurde hier aufgenommen:");
     $("#text2").html(place);
     $("#text3").html("Ergebnis");
-
-    // Display the percentage.
-    //document.querySelector("#percentage").style = "";
 };
-
-function showUserImage() {
-    var userImageUrl = document.getElementById('picUrl').value;
-    document.querySelector("#yourImageLink").src = userImageUrl;
-    document.querySelector("#analyseButton").style = "";
-
-}

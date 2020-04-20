@@ -9,7 +9,7 @@ path = '../Bilder/'
 
 for root, dirnames, filenames in os.walk(path):
 
-    #create dictionary for cropped pics
+    # Verzeichnis für gedrehte Bilder erstellen
     for dirname in dirnames:
         if dirname != "":
             if "Cropped" in dirname:
@@ -23,25 +23,24 @@ for root, dirnames, filenames in os.walk(path):
                 else:
                     print ("Info: Successfully created the directory %s " % newDir)
         
-    #skale the image
+    # Bild verarbeiten
     for filename in filenames:
         name, ext = os.path.splitext(filename)
+        file = os.path.join(root, filename)
+
+        # .DS_Store Dateien ignorieren (Für MacOS)
         if name == ".DS_Store":
             continue
 
-        file = os.path.join(root, filename)
-
-        #ignore image when already cropped
+        # Bild ignorieren, wenn es schon gedreht ist
         if "Cropped" in root:
             continue
 
-        #append file name to array list
+        
+        # Bilder rotieren
         image_list.append(os.path.basename(file))
-
-        #resize images
         image = Image.open(file)
         
-        #rotate the images 
         for i in range(11):
             rotatedImage = image.rotate(random.randrange(0, 360, 10))
             newRotatedImage = "{}Cropped/rotated{}_{}".format(root, i, image_list[count])
