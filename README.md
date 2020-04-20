@@ -51,11 +51,11 @@ Im Bilder-Ordner befinden sich die Basis-Bilder der Sehenswürdigkeiten. Diese w
 
 Um die Website und die Funktionalität der KI zu testen muss der Frontend-Ordner auf dem localhost gehostet werden. Hierfür bietet sich bspw. [XAMPP](https://www.apachefriends.org/de/download.html) an.
 
-Hierfür muss lediglich der frontend-Ordner in das htdocs-Verzeichnis von XAMPP kopiert werden, dann ist die Website unter http://localhost:8080/frontend/ erreichbar und verwendbar. Eine Anleitung zum einrichten von XAMPP finden sie [hier](https://wiki.selfhtml.org/wiki/Webserver/lokal_einrichten).
+Um die Website zu hosten, muss lediglich der frontend-Ordner in das htdocs-Verzeichnis von XAMPP kopiert werden, dann ist sie unter http://localhost:8080/frontend/ erreichbar und verwendbar. Eine Anleitung zum Einrichten von XAMPP finden sie [hier](https://wiki.selfhtml.org/wiki/Webserver/lokal_einrichten).
 
 ## <a name="development-setup"></a> Development setup
 
-Um selbst am Model zuarbeiten sind eine Reihe an Schritten notwendig.
+Um selbst am Model zu arbeiten oder Änderungen vorzunehmen sind eine Reihe an Schritten notwendig.
 
 ### <a name="voraus"></a> 1. Voraussetzungen
 
@@ -81,11 +81,11 @@ oder
 $ python3 ScaleImages.py
 ```
 
-Das Skript loopt über die Verzeichnisse der Sehenswürdigkeiten im Ordner `Bilder` und erstellt jeweils ein weiteres Verzeichnis mit dem Namen der Sehenswürdigkeit gefolgt von einem "Cropped". Anschließend loopt das Skript über alle sich in den Verzeichnis befindlichen Bilder und rotiert diese zehn mal in einem zufälligen Winkel. Diese Bilder werden in den `Cropped` Verzeichnissen gespeichert. Auf diese Weise erhöht sich der Datensatz von etwa 100 Bildern pro Ort auf 1000+ Bilder pro Ort.
+Das Skript loopt über die Verzeichnisse der Sehenswürdigkeiten im Ordner `Bilder` und erstellt jeweils ein weiteres Verzeichnis mit dem Namen der Sehenswürdigkeit mit dem Suffix "Cropped". Anschließend loopt das Skript über alle sich in den Verzeichnis befindlichen Bilder und rotiert diese zehn mal in einem zufälligen Winkel. Diese Bilder werden in den `Cropped` Verzeichnissen gespeichert. Auf diese Weise erhöht sich der Datensatz von etwa 400 Bildern pro Ort auf 4000+ Bilder pro Ort.
 
 #### <a name="dataset"></a> 3. Datenset generieren
 
-Ist das Skript durchlaufen, kann nun das Skript `CreateDataset.py` ausgeführt werden:
+Ist das `ScaleImages.py` Skript durchlaufen, kann nun das Skript `CreateDataset.py` ausgeführt werden:
 
 ```
 $ python CreateDataset.py
@@ -95,9 +95,9 @@ oder
 $ python3 CreateDataset.py
 ```
 
-In `CreateDataset.py` wird über werden die im vorherigen Skript generierten Bilder (in Form eines Arrays der Pixel des Bildes) zusammen mit dem dazugehörigen Label (also um welche Sehenswürdigkeit es sich handelt) im Array `training_data[]` gespeichert. Dieses wird anschließend durchmischt, so dass die Bilder der Sehenswürdigkeiten in zufälliger Reihenfolge im Array vorhanden sind. Dies bewirkt, dass das Model später beim Trainieren nicht zuerst eine Sehenswürdigkeit trainiert, dann die nächste usw.
+In `CreateDataset.py` wird über werden die im vorherigen Skript generierten Bilder zusammen mit dem dazugehörigen Label (also um welche Sehenswürdigkeit es sich handelt) im Array `training_data[]` gespeichert. Dieses wird anschließend durchmischt, sodass die Bilder der Sehenswürdigkeiten in zufälliger Reihenfolge im Array vorhanden sind. Dies bewirkt, dass das Model später beim Trainieren nicht zuerst eine Sehenswürdigkeit trainiert, dann die nächste usw.
 
-Anschließend wird über `training_data` geloopt, um die Bilder und die dazugehörigen Label in verschiedene Arrays zu speichern. Aus diesen Array werden dann die Dateien `x.pickle` und `y.pickle` generiert. `x.pickle` beinhaltet alle Bilder der Datensets und `x.pickle` die Label der Bilder in gleicher Reihenfolge.
+Anschließend wird über `training_data` geloopt, um die Bilder und die dazugehörigen Label in verschiedene Arrays zu speichern. Aus diesen Array werden dann die Dateien `x.pickle` und `y.pickle` generiert. `x.pickle` beinhaltet alle Bilder der Datensets und `y.pickle` die Label der Bilder in gleicher Reihenfolge.
 
 #### <a name="trainmodel"></a> 4. Model trainieren & testen
 
@@ -107,21 +107,21 @@ Ist das Datenset in Form der Pickle-Dateien erstellt, kann das Model trainiert u
 
 Um das neu trainierte Model für die Website zu verwenden, muss dieses zunächst gespeichert werden. Hierfür ist der letzte Codeblock des Notebooks auszuführen. Dieser speichert das trainierte Model im Verzeichnis *loc4tor/PythonScripts/models/loc4tor/1* zusammen mit den Gewichten.
 
-Um das Model in eine für die Website lesbare JSON-Datei zu konvertieren wird Tensorflow.js benötigt. Dies kann mithilfe von npm installiert werden:
+Um das Model in eine für die Website lesbare JSON-Datei zu konvertieren wird Tensorflow.js benötigt. Dies kann mithilfe von npm in der Konsole oder im Terminal installiert werden:
 
 ```
 $ npm install @tensorflow/tfjs
 ```
 
-Ist Tensorflow installiert kann der mitgebrachte tensorflowjs_converter verwendet werden. Um das Model zu konvertieren, muss folgender Befehl ausgeführt werden:
+Ist TensorflowJS installiert kann der mitgebrachte tensorflowjs_converter verwendet werden, um das Model zu konvertieren. Hierfür muss folgender Konsolenbefehl ausgeführt werden:
 
 ````
 $ tensorflowjs_converter --input_format=tf_saved_model /path/to/repo/loc4tor/PythonScripts/models/loc4tor/1 /path/to/repo/loc4tor/Frontend/js/model
 ````
 
-Die Option --input_format gibt die Art des gespeicherten Models an, in diesem Fall ein Tensorflow SavedModel. Der erste Pfad zeigt auf das Verzeichnis, in welchem sich das zu konvertierende Model befindet. Dieses sollte sich, solange nicht beim Speichern im Notebook verändert, innerhalb des Repos unter *loc4tor/PythonScripts/models/loc4tor/1*.
+Die Option --input_format gibt die Art des gespeicherten Models an, in diesem Fall ein Tensorflow SavedModel. Der erste Pfad zeigt auf das Verzeichnis, in welchem sich das zu konvertierende Model befindet. Dieses sollte sich, solange nicht beim Speichern im Notebook verändert, unter *loc4tor/PythonScripts/models/loc4tor/1* befinden.
 
-Der zweite Pfad zeigt auf das Verzeichnis, in welchem das konvertierte Model gespeichert werden soll. Damit das JavaScript das konvertierte Model findet, muss dieses sich zwingend in dem oben angegebenen Verzeichnis befinden.
+Der zweite Pfad zeigt auf das Verzeichnis, in welchem das konvertierte Model gespeichert werden soll. Damit das JavaScript das konvertierte Model findet, muss dieses  zwingend in das oben angegebenen Verzeichnis konvertiert werden.
 
 
 
