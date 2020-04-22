@@ -13,6 +13,8 @@ function dateiauswahl(evt) {
     if (element = document.querySelector("#yourImageLink")) {
         element.src = "";
         document.querySelector("#sourceImage").src = "";
+        $("#text1").html("");
+        $("#text2").html("");
     }
 
     var dateien = evt.target.files;
