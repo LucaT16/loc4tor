@@ -50,5 +50,5 @@ for root, dirnames, filenames in os.walk(path):
         count += 1
         totalcount +=1
 
-print("Info: Scaling successful! Generated %s images" % totalcount)
+print("Info: Rotating successful! Generated %s images" % totalcount)
 
