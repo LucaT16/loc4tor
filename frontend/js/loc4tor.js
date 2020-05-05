@@ -82,7 +82,7 @@ async function showResult() {
             place = "Freiheitsstatue"
             break;
         case 4:
-            sourceImageUrl = "./assets/GoldenGate.jpeg";
+            sourceImageUrl = "./assets/GoldenGate.jpg";
             place = "Golden Gate Bridge"
             break;
         case 5:
