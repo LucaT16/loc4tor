@@ -43,7 +43,7 @@ for root, dirnames, filenames in os.walk(path):
         
         for i in range(11):
             rotatedImage = image.rotate(random.randrange(0, 360, 10))
-            newRotatedImage = "{}Cropped/rotated{}_{}".format(root, i, image_list[count])
+            newRotatedImage = "{}Cropped/{}_rotated{}".format(root, image_list[count], i)
             rotatedImage.save(newRotatedImage, optimized=True, quality=85)
             totalcount += 1
         
